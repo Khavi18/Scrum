@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class UserController extends Controller
 {
+    //Create new user
     public function store(Request $request) {
         $request->validate([
             'name'=>'required',
@@ -15,6 +16,9 @@ class UserController extends Controller
         ]);
 
         User::create($request->post());
+        return response()->json([
+            'message'=>'User created successfully'
+        ]);
 
     }
 }
